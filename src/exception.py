@@ -21,9 +21,9 @@ class CustomException(Exception):
 
 #sample code to check if exception handling is working or not
 
-if __name__=="__main__":
-    try:
-        a = 1/0
-    except Exception as e:
-        logging.info("Divide By Zero Error")
-        raise CustomException(e,sys)
+# if __name__=="__main__":
+#     try:
+#         a = 1/0
+#     except Exception as e:
+#         logging.info("Divide By Zero Error")
+#         raise CustomException(e,sys)
