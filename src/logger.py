@@ -15,7 +15,3 @@ logging.basicConfig(
 
 
 )
-
-#sample code to check if logging is working or not
-# if __name__=="__main__":
-#     logging.info("Logging has started.")
