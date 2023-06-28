@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome</title>
+  <style>
+    /* Add your custom CSS styling here */
+
+    .container {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .chat-bot {
+      font-size: 18px;
+      color: #666;
+    }
+
+    .options {
+      margin-top: 20px;
+    }
+
+    .options label {
+      margin-right: 10px;
+    }
+
+    .submit-button {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Our Website</h1>
+    <p class="chat-bot">I am the Student Counselor Chatbot</p>
+    <p class="chat-bot">How can I assist you today?</p>
+
+    <div class="options">
+      <label>
+        <input type="radio" name="chat-option" value="analyze">
+        Analyze the result
+      </label>
+      <label>
+        <input type="radio" name="chat-option" value="recommend-course">
+        Recommend courses based on score
+      </label>
+    </div>
+
+    <button class="submit-button" onclick="processInput()">Submit</button>
+  </div>
+
+  <script>
+    function processInput() {
+      var options = document.getElementsByName("chat-option");
+      var selectedOption;
+
+      for (var i = 0; i < options.length; i++) {
+        if (options[i].checked) {
+          selectedOption = options[i].value;
+          break;
+        }
+      }
+
+      if (selectedOption === "analyze") {
+        window.location.href = "details";
+      } else if (selectedOption === "recommend-course") {
+        window.location.href = "course";
+      }
+    }
+  </script>
+</body>
+</html>
