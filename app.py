@@ -2,7 +2,7 @@ from flask import Flask,request,render_template
 import numpy as np
 import pandas as pd
 
-from sklearn.preprocessing import StandardScaler
+from src.pipelines.suggesstion_pipeline import CourseData
 from src.pipelines.analysis_pipeline import CustomData
 from src.components.data_transformation import DataTransformation
 
@@ -38,8 +38,8 @@ def details_datapoint():
             reading_score=float(request.form.get('writing_score')),
             writing_score=float(request.form.get('reading_score')),
             math_score=float(request.form.get('math_score')),
-
         )
+
         df=data.get_data_as_data_frame()
 
         # Add a new column with the sum of the three numeric columns
@@ -65,8 +65,16 @@ def course_recomendation():
     if request.method=='GET':
         return render_template('course_suggestions.html')
     else:
-        pass
+        data=CourseData(
+            reading_score=float(request.form.get('writing_score')),
+            writing_score=float(request.form.get('reading_score')),
+            math_score=float(request.form.get('math_score')),
 
+        )
+
+        df=data.get_score_as_a_dict()
+
+        return render_template(('career.html'))
 
 if __name__=="__main__":
     app.run(host="0.0.0.0")

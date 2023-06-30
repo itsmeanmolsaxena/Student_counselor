@@ -21,22 +21,15 @@ class DataTransformation:
             # Add a new column with the sum of the three numeric columns
             df['Total Score'] = df[numeric_columns].sum(axis=1)
 
-            # Print the updated dataset
-            # print(df.head(5))
-
             columns = ['MathScore', 'ReadingScore', 'WritingScore', 'Total Score']
 
             # Calculate the average of each column
             column_averages = df[columns].mean(axis=0)
 
-            # Print the column averages
-            # print(column_averages)
-
             #convert series to dictionary
             average_scores = column_averages.to_dict()
 
             average_scores = {key: round(value, 2) for key, value in average_scores.items()}
-
 
             return average_scores
 
