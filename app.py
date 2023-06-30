@@ -4,6 +4,7 @@ import pandas as pd
 
 from sklearn.preprocessing import StandardScaler
 from src.pipelines.analysis_pipeline import CustomData
+from src.components.data_transformation import DataTransformation
 
 application=Flask(__name__)
 
@@ -39,11 +40,25 @@ def details_datapoint():
             math_score=float(request.form.get('math_score')),
 
         )
-        pred_df=data.get_data_as_data_frame()
-        print(pred_df)
-        print("Before Prediction")
-        results = [23]
-        return render_template(('student_details.html'))
+        df=data.get_data_as_data_frame()
+
+        # Add a new column with the sum of the three numeric columns
+        df['total_score'] = df['reading_score'] + df['writing_score'] + df['math_score']
+
+        student_score = df.to_dict(orient='records')
+
+        data_transformation = DataTransformation()
+
+        avg_score = data_transformation.calculate_average_of_scores()
+
+        return render_template(('analysis.html'),total_score=student_score[0]['total_score'], 
+                               math_score = student_score[0]['math_score'], 
+                               reading_score = student_score[0]['reading_score'], 
+                               writing_score = student_score[0]['writing_score'],
+                               avg_total_score = avg_score['Total Score'],
+                               avg_reading_score = avg_score['ReadingScore'],
+                               avg_writing_score = avg_score['WritingScore'],
+                               avg_math_score = avg_score['MathScore'])
 
 @app.route('/course',methods=['GET','POST'])
 def course_recomendation():
