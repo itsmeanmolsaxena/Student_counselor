@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center the container */
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f9f9f9;
+        }
+        .highlight {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        .message {
+            margin-top: 20px;
+            background-color: #fafafa;
+            padding: 10px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Scores</h1>
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Student's Score</th>
+                <th>Average Score</th>
+            </tr>
+            <tr>
+                <td class="column-name">Reading</td>
+                <td class="center">{{reading_score}}</td>
+                <td class="center">{{avg_reading_score}}</td>
+            </tr>
+            <tr>
+                <td class="column-name">Writing</td>
+                <td class="center">{{writing_score}}</td>
+                <td class="center">{{avg_writing_score}}</td>
+            </tr>
+            <tr>
+                <td class="column-name">Math</td>
+                <td class="center">{{math_score}}</td>
+                <td class="center">{{avg_math_score}}</td>
+            </tr>
+            <tr>
+                <td class="column-name">Total</td>
+                <td class="center">{{total_score}}</td>
+                <td class="center">{{avg_total_score}}</td>
+            </tr>
+        </table>
+        
+        {% if total_score > avg_total_score %}
+        <div class="message">
+            <p>You have done exceptionally well!</p>
+            <p>You are in 40% of students who have scored 120 total marks.</p>
+        </div>
+        {% else %}
+        <div class="message">
+            <p>Don't be discouraged!</p>
+            <p>You have the potential to achieve great results.</p>
+            <p>Consider focusing on the subject in which you have the highest score to make a career.</p>
+        </div>
+        {% endif %}
+    
+    </div>
+</body>
+</html>

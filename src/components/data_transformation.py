@@ -8,7 +8,7 @@ from src.logger import logging
 
 class DataTransformation:
 
-    def add_scores_to_dataframe(self):
+    def calculate_average_of_scores(self):
         try:
 
             data_path = "notebook/data/student_data.csv"
@@ -30,9 +30,15 @@ class DataTransformation:
             column_averages = df[columns].mean(axis=0)
 
             # Print the column averages
-            print(column_averages)
+            # print(column_averages)
 
-            return column_averages
+            #convert series to dictionary
+            average_scores = column_averages.to_dict()
+
+            average_scores = {key: round(value, 2) for key, value in average_scores.items()}
+
+
+            return average_scores
 
         except Exception as e:
             raise CustomException(e, sys)
