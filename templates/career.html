@@ -1,1 +1,139 @@
-<h1> Success </h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Recommendation</title>
+    <style>
+        /* Styling for the container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        /* Styling for the recommendation message */
+        .message {
+            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            text-align: center;
+        }
+        
+        /* Styling for the course box */
+        .course-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+            border: 4px double #333;
+            border-radius: 10px;
+        }
+        
+        /* Styling for the course bubbles */
+        .bubble {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 120px;
+            height: 120px;
+            margin: 10px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Styling for the course names */
+        .bubble p {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+        }
+        
+        /* Custom colors for each bubble */
+        .bubble:nth-child(1) { background-color: #FF7F50; }
+        .bubble:nth-child(2) { background-color: #00BFFF; }
+        .bubble:nth-child(3) { background-color: #FFD700; }
+        .bubble:nth-child(4) { background-color: #32CD32; }
+        .bubble:nth-child(5) { background-color: #FF69B4; }
+        .bubble:nth-child(6) { background-color: #8A2BE2; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="message">
+            <p>Based on your scores, we highly recommend you to please consider below given courses as a career.</p>
+        </div>
+        
+        <div class="course-box">
+            {% if highest_subject == 'math_score' %}
+                <div class="bubble">
+                    <p>Computer Science</p>
+                </div>
+                <div class="bubble">
+                    <p>Data Science</p>
+                </div>
+                <div class="bubble">
+                    <p>Engineering</p>
+                </div>
+                <div class="bubble">
+                    <p>Artificial Intelligence</p>
+                </div>
+                <div class="bubble">
+                    <p>Cybersecurity</p>
+                </div>
+                <div class="bubble">
+                    <p>Software Engineering</p>
+                </div>
+            {% elif highest_subject == 'reading_score' %}
+                <div class="bubble">
+                    <p>Journalism</p>
+                </div>
+                <div class="bubble">
+                    <p>English Literature</p>
+                </div>
+                <div class="bubble">
+                    <p>Teaching</p>
+                </div>
+                <div class="bubble">
+                    <p>Public Relations</p>
+                </div>
+                <div class="bubble">
+                    <p>Linguistics</p>
+                </div>
+                <div class="bubble">
+                    <p>Communications</p>
+                </div>
+            {% elif highest_subject == 'writing_score' %}
+                <div class="bubble">
+                    <p>Copywriting</p>
+                </div>
+                <div class="bubble">
+                    <p>Content Writing</p>
+                </div>
+                <div class="bubble">
+                    <p>Creative Writing</p>
+                </div>
+                <div class="bubble">
+                    <p>Screenwriting</p>
+                </div>
+                <div class="bubble">
+                    <p>Technical Writing</p>
+                </div>
+                <div class="bubble">
+                    <p>Journalism</p>
+                </div>
+            {% else %}
+                <p>No valid score data available.</p>
+            {% endif %}
+        </div>
+        
+        <div class="message">
+            <p><i><b>We wish you the best for your future! </b></i></p>
+        </div>
+    </div>
+</body>
+</html>
