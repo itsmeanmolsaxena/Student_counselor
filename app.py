@@ -72,9 +72,11 @@ def course_recomendation():
 
         )
 
-        df=data.get_score_as_a_dict()
+        scores =data.get_score_as_a_dict()
 
-        return render_template(('career.html'))
+        subject_with_highest_mark = max(scores[0], key=lambda x: scores[0][x])
+
+        return render_template(('career.html'), highest_subject= subject_with_highest_mark)
 
 if __name__=="__main__":
     app.run(host="0.0.0.0")
