@@ -1,7 +1,6 @@
 import sys
 import pandas as pd
 from src.exception import CustomException
-# from src.utils import load_object
 
 
 class AnalysisPipeline:
@@ -14,7 +13,7 @@ class CustomData:
         race_ethnicity: str,
         parental_level_of_education,
         lunch: str,
-        test_preparation_course: str,
+        IsFirstChild: str,
         reading_score: int,
         writing_score: int,
         math_score: int):
@@ -27,7 +26,7 @@ class CustomData:
 
         self.lunch = lunch
 
-        self.test_preparation_course = test_preparation_course
+        self.IsFirstChild = IsFirstChild
 
         self.reading_score = reading_score
 
@@ -42,7 +41,7 @@ class CustomData:
                 "race_ethnicity": [self.race_ethnicity],
                 "parental_level_of_education": [self.parental_level_of_education],
                 "lunch": [self.lunch],
-                "test_preparation_course": [self.test_preparation_course],
+                "IsFirstChild": [self.IsFirstChild],
                 "reading_score": [self.reading_score],
                 "writing_score": [self.writing_score],
                 "math_score": [self.math_score],

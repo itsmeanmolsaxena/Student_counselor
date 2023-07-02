@@ -35,6 +35,4 @@ class CourseData:
 
         except Exception as e:
             raise CustomException(e, sys)
-        
-    # def get_highest_marks():
 

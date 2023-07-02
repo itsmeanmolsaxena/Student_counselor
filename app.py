@@ -1,6 +1,4 @@
 from flask import Flask,request,render_template
-import numpy as np
-import pandas as pd
 
 from src.pipelines.suggesstion_pipeline import CourseData
 from src.pipelines.analysis_pipeline import CustomData
@@ -11,7 +9,6 @@ application=Flask(__name__)
 app=application
 
 ## Route for a home page
-
 @app.route('/')
 def index():
     return render_template('index.html') 
@@ -34,7 +31,7 @@ def details_datapoint():
             race_ethnicity=request.form.get('ethnicity'),
             parental_level_of_education=request.form.get('parental_level_of_education'),
             lunch=request.form.get('lunch'),
-            test_preparation_course=request.form.get('test_preparation_course'),
+            IsFirstChild=request.form.get('IsFirstChild'),
             reading_score=float(request.form.get('writing_score')),
             writing_score=float(request.form.get('reading_score')),
             math_score=float(request.form.get('math_score')),
