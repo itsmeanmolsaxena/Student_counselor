@@ -32,6 +32,7 @@ def details_datapoint():
             parental_level_of_education=request.form.get('parental_level_of_education'),
             lunch=request.form.get('lunch'),
             IsFirstChild=request.form.get('IsFirstChild'),
+            PracticeSport=request.form.get('IsFirstChild'),
             reading_score=float(request.form.get('writing_score')),
             writing_score=float(request.form.get('reading_score')),
             math_score=float(request.form.get('math_score')),

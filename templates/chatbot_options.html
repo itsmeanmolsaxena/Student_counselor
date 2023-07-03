@@ -5,69 +5,126 @@
   <style>
     /* Add your custom CSS styling here */
 
-    .container {
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       text-align: center;
-      margin-top: 100px;
+    }
+
+    .container {
+      max-width: 400px;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     h1 {
       font-size: 24px;
       color: #333;
+      margin-top: 0;
+    }
+
+    .chat-container {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
     }
 
     .chat-bot {
       font-size: 18px;
       color: #666;
+      margin-bottom: 10px;
     }
 
     .options {
       margin-top: 20px;
     }
 
-    .options label {
-      margin-right: 10px;
+    .options select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
 
     .submit-button {
-      margin-top: 20px;
+      display: block;
+      width: 100%;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #ffffff;
+      font-size: 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+    }
+
+    .user-message,
+    .bot-message {
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .user-message {
+      background-color: #e6e6e6;
+      text-align: left;
+    }
+
+    .bot-message {
+      background-color: #007bff;
+      color: #ffffff;
+      text-align: right;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Welcome to Our Website</h1>
-    <p class="chat-bot">I am the Student Counselor Chatbot</p>
-    <p class="chat-bot">How can I assist you today?</p>
+    <div class="chat-container">
+      <div class="chat-bot">
+        <p class="bot-message">I am the Student Counselor Chatbot</p>
+        <p class="bot-message">How can I assist you today?</p>
+      </div>
 
-    <div class="options">
-      <label>
-        <input type="radio" name="chat-option" value="analyze">
-        Analyze the result
-      </label>
-      <label>
-        <input type="radio" name="chat-option" value="recommend-course">
-        Recommend courses based on score
-      </label>
+      <div class="options">
+        <select name="chat-option" required>
+          <option value="" disabled selected>Please select an option from the dropdown</option>
+          <option value="analyze">Analyze the result</option>
+          <option value="recommend-course">Recommend courses based on score</option>
+        </select>
+      </div>
+
+      <button class="submit-button" onclick="processInput()">Submit</button>
     </div>
 
-    <button class="submit-button" onclick="processInput()">Submit</button>
+    <div id="conversation"></div>
   </div>
 
   <script>
     function processInput() {
-      var options = document.getElementsByName("chat-option");
-      var selectedOption;
-
-      for (var i = 0; i < options.length; i++) {
-        if (options[i].checked) {
-          selectedOption = options[i].value;
-          break;
-        }
-      }
+      var optionSelect = document.querySelector('select[name="chat-option"]');
+      var selectedOption = optionSelect.value;
 
       if (selectedOption === "analyze") {
+        document.getElementById("conversation").innerHTML += `
+          <p class="user-message">Analyze the result</p>
+        `;
         window.location.href = "details";
       } else if (selectedOption === "recommend-course") {
+        document.getElementById("conversation").innerHTML += `
+          <p class="user-message">Recommend courses based on score</p>
+        `;
         window.location.href = "course";
       }
     }
