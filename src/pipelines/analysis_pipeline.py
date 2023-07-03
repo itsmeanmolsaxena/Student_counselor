@@ -14,6 +14,7 @@ class CustomData:
         parental_level_of_education,
         lunch: str,
         IsFirstChild: str,
+        PracticeSport: str,
         reading_score: int,
         writing_score: int,
         math_score: int):
@@ -27,6 +28,8 @@ class CustomData:
         self.lunch = lunch
 
         self.IsFirstChild = IsFirstChild
+
+        self.PracticeSport = PracticeSport
 
         self.reading_score = reading_score
 
@@ -42,6 +45,7 @@ class CustomData:
                 "parental_level_of_education": [self.parental_level_of_education],
                 "lunch": [self.lunch],
                 "IsFirstChild": [self.IsFirstChild],
+                "PracticeSport": [self.PracticeSport],
                 "reading_score": [self.reading_score],
                 "writing_score": [self.writing_score],
                 "math_score": [self.math_score],
